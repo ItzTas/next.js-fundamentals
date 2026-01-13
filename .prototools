@@ -1,5 +1,4 @@
 node = "~22"
-yarn = "~1"
 
 [settings]
 auto-install = true
