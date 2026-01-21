@@ -12,7 +12,7 @@ export default async function DashboardPage() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex justify-between items-center mb-8">
         <h1 className="text-2xl font-bold">Issues</h1>
         <Link href="/issues/new">
           <Button>
@@ -25,9 +25,9 @@ export default async function DashboardPage() {
       </div>
 
       {issues.length > 0 ? (
-        <div className="overflow-hidden rounded-lg border border-gray-200 dark:border-dark-border-default bg-white dark:bg-dark-high shadow-sm">
+        <div className="overflow-hidden bg-white rounded-lg border border-gray-200 shadow-sm dark:border-dark-border-default dark:bg-dark-high">
           {/* Header row */}
-          <div className="grid grid-cols-12 gap-4 px-6 py-3 text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-dark-elevated border-b border-gray-200 dark:border-dark-border-default">
+          <div className="grid grid-cols-12 gap-4 py-3 px-6 text-sm font-medium text-gray-500 bg-gray-50 border-b border-gray-200 dark:text-gray-400 dark:bg-dark-elevated dark:border-dark-border-default">
             <div className="col-span-5">Title</div>
             <div className="col-span-2">Status</div>
             <div className="col-span-2">Priority</div>
@@ -40,9 +40,9 @@ export default async function DashboardPage() {
               <Link
                 key={issue.id}
                 href={`/issues/${issue.id}`}
-                className="block hover:bg-gray-50 dark:hover:bg-dark-elevated transition-colors"
+                className="block transition-colors hover:bg-gray-50 dark:hover:bg-dark-elevated"
               >
-                <div className="grid grid-cols-12 gap-4 px-6 py-4 items-center">
+                <div className="grid grid-cols-12 gap-4 items-center py-4 px-6">
                   <div className="col-span-5 font-medium truncate">
                     {issue.title}
                   </div>
@@ -65,9 +65,9 @@ export default async function DashboardPage() {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col items-center justify-center py-12 text-center border border-gray-200 dark:border-dark-border-default rounded-lg bg-white dark:bg-dark-high p-8">
-          <h3 className="text-lg font-medium mb-2">No issues found</h3>
-          <p className="text-gray-500 dark:text-gray-400 mb-6">
+        <div className="flex flex-col justify-center items-center p-8 py-12 text-center bg-white rounded-lg border border-gray-200 dark:border-dark-border-default dark:bg-dark-high">
+          <h3 className="mb-2 text-lg font-medium">No issues found</h3>
+          <p className="mb-6 text-gray-500 dark:text-gray-400">
             Get started by creating your first issue.
           </p>
           <Link href="/issues/new">
