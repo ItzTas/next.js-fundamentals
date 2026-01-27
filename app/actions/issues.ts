@@ -105,14 +105,11 @@ export const updateIssue = async (id: number, data: Partial<IssueData>) => {
     const validatedData = validationResult.data
     const updateData: Record<string, unknown> = {}
 
-    if (validatedData.title !== undefined)
-      updateData.title = validatedData.title
-    if (validatedData.description !== undefined)
-      updateData.description = validatedData.description
-    if (validatedData.status !== undefined)
-      updateData.status = validatedData.status
-    if (validatedData.priority !== undefined)
-      updateData.priority = validatedData.priority
+    for (const [key, value] of Object.entries(validatedData)) {
+      if (value !== undefined) {
+        updateData[key as keyof IssueData] = value
+      }
+    }
 
     // Update issue
     await db.update(issues).set(updateData).where(eq(issues.id, id))
