@@ -105,7 +105,10 @@ export const updateIssue = async (id: number, data: Partial<IssueData>) => {
     const validatedData = validationResult.data
     const updateData: Record<string, unknown> = {}
 
+    const blockedKeys = ['userId'] as const
     for (const [key, value] of Object.entries(validatedData)) {
+      if (blockedKeys.includes(key as (typeof blockedKeys)[number])) continue
+
       if (value !== undefined) {
         updateData[key as keyof IssueData] = value
       }
